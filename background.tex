@@ -1,0 +1,54 @@
+% [In this section I summarise related work on LLM, and will remove the unrelated at a later stage]
+% \subsection{Misc}
+% \cite{hoffmann2022training} demonstrate that smaller models trained on a larger amount of data outperform larger models and they introduced a method to estimate the amount of training data required given the expected model size and the available FLOPs budget. They introduce Chinchilla, a large language model trained following their principle, that outperforms a larger model: Gopher.
+
+
+\subsection{Evaluation of LLMs}
+\cite{moradi2022gpt3} compares a few-shot LLM with a specialised transformer in the biomedical domain: BioBERT. They evaluate the Curie model from OpenAI on three tasks: completion, classification and question/answering using few-shot training. 
+They report results from several biomedical datasets (MedNLI, BioText, MedSTS, PubMed-RCT and PubMedQa) and indicate that LLMs are poor, even with few-shot training. 
+This study has limitations on the number of OpenAI models that were evaluated. The authors decided to focus only on Curie, stating that more sophisticated models returned the same results, which are not indicated even in the appendices of the paper. 
+Secondly, the author did not indicate the strategy they used to build few-shot requests and prompts. 
+
+~\cite{kokon2023chatgpt} found that ChatGPT (early version, before the API was available), can manage different tasks, without being the best in any of them. ChatGPT did not outperform the SOTA in any of the NLP tasks tested (difference from 4\% to 70\%).
+However, when judging the context awareness in the personalisation task, the authors found that ChatGPT offers good capabilities. 
+
+\cite{jin2023large} aims to evaluate the capacity of LLMs to determine if a hypothesised causal relationship can be validly inferred from a set of correlational statements. For this purpose, they define a dataset, called CORR2CAUSE, based on graph analysis and use it for evaluating LLMs and SLMs before and after fine-tuning. All models failed to achieve performances above random. After fine-tuning using the CORR2CAUSE dataset the performances improve, with RoBERTa-Large MNLI reaching 94.74\% F1. However, LLMs fail generalization tests via paraphrasing and variable name changes
+
+\cite{gonzalez2023yes} explores the ability of ChatGPT to perform named entity recognition and classification (NERC) on historical documents. 
+The authors evaluate ChatGPT's zero-shot NERC performance on 3 datasets - NewsEye, hipe-2020, and ajmc - containing historical newspapers and commentaries.
+Compared to state-of-the-art LM-based NERC systems, ChatGPT struggles with NERC on these datasets.
+The authors identify several factors that could limit ChatGPT's effectiveness in this task: inconsistent entity definitions across guidelines, complex nested entity annotations, digitization errors, code-switching between languages, and lack of specificity in prompting.
+Authors suggest also that ChatGPT's reliance on internet data causes "unawareness" of historical knowledge, contributing to poorer performance on entity extraction from archival data.
+
+
+\cite{ma2023large} compares LLM and SLM (Small Language Models), such as Roberta-large in tasks of NER, RE and ED (Event detection). In the literature, there is no clear agreement yet on whether LLMs are good or not at few-shot extractors. 
+Through their experiments, they found out that LLM is not able to perform well in few-shot extractions as compared with SLM, however, they are more suitable to perform hard tasks. Hard examples are defined as requiring particular knowledge or the ability to swallow and reason with a larger context. 
+The authors base their evaluation on the following datasets: a) CONLL, OntoNotes, FewNERD for NER with the general set of labels (people, location, etc.), RE, b) TACREV, TACRED for RE, and ACE05, MAVEN and ERE for ED. 
+The authors propose an adaptive method called "filter-then-rerank" where they combine SLMs for filtering hard cases and leverage LLMs to solve them. 
+With this new approach, they can use the best capability from both models and reduce the costly requests required for LLMs. 
+
+\cite{tang2023struc} evaluates the ability of large language models (LLMs) like GPT-3.5 and GPT-4 to generate complex structured outputs like tables. 
+LLMs struggle with tasks requiring adhering to specific formatting constraints, with only 3-9\% of outputs being completely correct.
+The authors propose STRUCT-BENCH, a benchmark with datasets spanning raw text, HTML, and LaTeX tables to support the evaluation of LLMs.
+Experiments on STRUC-BENCH show issues with content accuracy, formatting, numerical reasoning, and handling long tables. 
+To overcome that, they propose structure-aware instruction tuning, using ChatGPT to generate formatting instructions.
+Fine-tuning LLaMA-7B with these instructions significantly improves performance on seen and unseen structured text generation.
+They present an ability map assessing model capabilities across coverage, formatting, reasoning, comprehension, pragmatics, and hallucination control.
+This analysis highlights the weaknesses of current LLMs in structured text generation and suggests directions for improvement.
+
+
+\subsection{Evaluation techniques}
+
+To the best of our knowledge, the requirement to obtain a valid JSON output presents additional challenges that are not usually reported in other related works evaluating data extraction or text mining. 
+
+\cite{risch2021semantic} proposes a new method based on cross-encoder, to evaluate answers from LLM from a semantic point of view. This approach is an alternative to BLEU and ROUGE scores which are strongly based on the n-gram comparison. This paper utilised a technique already described in the~\cite{reimers2019sentencebert} (using the classification encoder) in the context of machine translation, and shows that using semantic embeddings comparison can provide more meaningful evaluation scores that both n-gram-based scores (BLEU, ROUGE) or BERTScores which is heavily dependent on the combination of the layer that is used for calculating the sentence embeddings. 
+
+\cite{lin2023llmeval} proposes an LLM-based evaluation method for comparing open-domain conversation with LLM. They defined a single prompt that is used to compare the generated response and evaluate using four metrics: appropriateness, content, grammar, and relevance. 
+This method showed scores that outperformed other methods in terms of Spearman and Pearson correlation between human rating and automatic rating. 
+However, this method is greatly dependent on the underlying LLM and its result might not be consistent between two versions of the same evaluation LLM model. 
+
+\cite{min2023factscore} presents a novel approach for evaluating large generated text using an approach based on decomposing each statement in atomic closures and evaluating them separately. 
+The authors also stress the aspect that evaluation should be parametric to the knowledge that such evaluation refers to. Intuitively this makes sense, evaluating knowledge from chemistry using a biomedical database, is going to result in rather poor scores. 
+The authors then define an automatic evaluation method that a) uses a fine-tuned LM (LLaMA-7B and LLaMA-13B) for extracting the atomic clause from the text, b) estimation is carried out automatically. 
+For the estimator, they test several techniques, of which the best is as follows: 1) related information is retrieved from the knowledge source, 2) information is passed to the fine-tuned LM to establish the relatedness, and 3) a parallel method involving non-parametric probability generated by an LM which fill-up the marked term using retrieved information selected by similarity. 
+The limitation of this approach is the dependency on an external LM model for generating the atomic statements. 

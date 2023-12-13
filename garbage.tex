@@ -1,0 +1,57 @@
+
+
+
+% % Why this problem we are solving is challenging? 
+% On the other hand, there are several challenges ahead that make LLM difficult to interact for extracting structured text from the text: 
+
+% LLM is still a generative model working on probability, and although the predictability can be forced (for example by setting temperature = 0 on OpenAI API), it's still presenting stochastic behaviours. For example, working interactively on prompt engineering could be vaporised by model updates. The process looks like more trial-error approach where small changes in the prompt can result in substantially different results (e.g. missing a comma could dramatically alter the response). 
+% A second aspect that makes the interaction complex is the need to have machine-readable responses, for this reason is necessary that the LLM parses it's own answers in a structured format, such as JSON for example. This could be considered a second point of failure. 
+% Furthermore, 
+
+% We can show our results ~33\% - 50\% accuracy for main materials in magnetic studies, 40-60\% for doping discussed at document level (e.g. scientists take a material and test different additions/ replacement)
+
+
+% C) LLM context is limited, although expanding, it's costly. In general, ideally, we would like to have a mechanism that is independent of the context 
+
+% \begin{enumerate}
+%     \item 
+%     \item LLM does not know well about subjects that require knowledge (e.g. materials science)
+%     \item Parsing the response in machine-readable is a mess 
+% \end{enumerate}
+
+
+% Support in the challenges: 
+%1) NER using LLM in materials science sucks  (other works, in biomed )
+%2) prompt engineering is like working with rules, works till the model changes for extracting specific entities (our test)
+%3)  hard to provide definitions when the definitions are example based (what is a material) 
+
+
+% Solution: combine NER and LLM:
+%1) Q/A at the document level (or "scoped QA") -> extends the context
+    %1A) embedding quality mandatory -> ADA embeddings are not suitable for specialised knowledge 
+%2) For example by adding suggestions extracted with the NER to the LLM -> extends the vocabulary for the queries
+%3) Response parsing using NER + LLM
+
+
+
+
+% For materials, we need to mix doping ratio (x=0.10) with formula (La 1-x Fe x O 7).  
+
+
+% Analysis at the document level could solve this ambiguity.
+
+% LLM could make a positive impact due to their large context, and general improvement in understanding relations between constructs. 
+
+
+% Try to use LLM for advanced knowledge data extraction
+
+% The general issue is that LLM don't work well with text requiring advanced knowledge. 
+% For example two studies targeting biological scientific text,moradi2022gpt3} found that the LLM are performing worst than a BERT-fine-tuned model. 
+
+
+% This does not work well in the order of material -> properties, and / or materials -> conditions
+% Howeve, we need to think in a different way: 
+%  - we need to "anchor" the LLM attention to information we know are correct
+%  - information that we can extract with NER, are likely correct (no hallucination, no false information)
+%  - so we can anchor the attention to property values, and build back our data
+%  - like a painter, we probably need to perform several passages to consolidate the information 
