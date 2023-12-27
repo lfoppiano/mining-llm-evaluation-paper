@@ -16,13 +16,13 @@
   postbreak=\mbox{{$\hookrightarrow$}\space},
 }
 
-\title{Mining Experimental Data in Materials Research with Large Language Models}
-\author[1]{Luca Foppiano}
+\title{Mining experimental data from Materials Science literature with Large Language Models}
+\author[1,2]{Luca Foppiano}
 \author[1]{Guillaume Lambard}
+\author[2]{Toshiyuki Amagasa}
 \author[1]{Masashi Ishii}
-\affil[1]{NIMS}
-
-% Potential Co-authors: Pedro Ortiz, Guillaume Lambard, Ishii, Amagasa, Lopez
+\affil[1]{Data-driven Materials Research Field, Centre for Basic Research on Materials, NIMS, JP}
+\affil[2]{Knowledge and Data Engineering, Centre for Computational Sciences, University of Tsukuba} 
 
 \begin{document}
 
@@ -30,9 +30,8 @@
 
 \section{Introduction}
 
-Mining experimental data from papers has become increasingly popular in materials science due to the vast amount of information available and the need for accelerating materials discovery using data-driven techniques.
-
 % Why is important?
+Mining experimental data from papers has become increasingly popular in materials science due to the vast amount of information available and the need for accelerating materials discovery using data-driven techniques.
 A substantial volume of experimental data needs to be gathered, primarily sourced from findings published in scientific articles.
 Nonetheless, this data comes in various forms: unstructured textual content and structured tables and graphs, adding complexity to the extraction process. 
 As a result, many projects still depend on manual data extraction.
@@ -46,15 +45,18 @@ Moreover, there exists substantial confusion due to the frequent overuse of cert
 These sub-domain-specific conventions pose a significant challenge when attempting to create structured datasets that can function effectively across various sub-domains.
 
 % What is the problem we are trying to solve? 
-The advent of Large Language Models (LLM) has ushered in a new era of technology with immense potential, ranging from the capacity to link concepts to engaging in conversational reasoning.
-LLM models offer a more efficient approach based on a centralised API offering performance superior to most of the off-the-shelf solutions. 
-As a consequence, previous limitations such as the context window to a maximum of 512 tokens of Small Language Model (SLM) such as BERT. 
-At the time of writing this article, while the cheaper  "GPT-3.5-turbo" allows a context window of up to 4096 tokens, there are other models (Anthropic Claud 2.1) raising the limit above 100000 tokens.  
-Such models are capable of digesting entire articles, and even larger reports, although is not clear how effective the LLM is to retain information from any part of the document.
+The advent of Large Language Models (LLM) has ushered in a new era of technology with immense potential, ranging from the capacity to link concepts to engaging in conversational reasoning~\cite{zhang2023one,yao2023tree,valmeekam2023planning,sun2023pearl}.
+Compared to SLMs, LLMs offer the capability of ingesting more text, working with a context window which is at least 6 to 8 times larger than BERT-base encoders (limited at 512 tokens). 
+Furthermore, the interaction with LLMs via prompts changes the construction paradigm which becomes more flexible, and more suitable for human interaction. 
+However, the actual capabilities in reasoning, understanding and recognition are still evaluated.
 
-The demand for structured data necessitates the extraction of more intricate information in a flexible manner. 
-LLMs present a valuable opportunity to expedite the development of Text and Data Mining (TDM) processes that can be described as processing free text. 
-Although achieving this objective is still a considerable challenge, this study aims to assess LLMs' ability to comprehend, manipulate, and reason with complex information that demands substantial background knowledge as in Materials Science. 
+Previous studies in Information Extraction (IE) have shown evidence of LLMs proficiency in general tasks while falling short in areas where specific knowledge is required~\cite{kokon2023chatgpt}. 
+In particular, LLMs did not outperform SLMs in most of the discriminative tasks such as named entity recognition (NER), relation extraction (RE) and event detection (ED) in general domains~\cite{ma2023large}, in history~\cite{gonzalez2023yes}, and biology~\cite{moradi2022gpt3}.
+Other works testing chemistry capabilities found that GPT-4 understands various aspects of chemistry including chemical compounds~\cite{hatakeyama2023prompt} however, its knowledge is general and lacks methods for learning through retrieving recent literature~\cite{hatakeyama2023using}.
+
+While LLMs present a valuable opportunity to develop more flexible Text and Data Mining (TDM) processes, there is evidence that suggests that in specialised tasks, they are on par with SLMs. 
+
+This study aims to assess LLMs' ability to comprehend, manipulate, and reason with complex information that demands substantial background knowledge as in Materials Science. 
 
 % Goals 
 The objectives of this work can be summarised in the following questions: 
@@ -77,7 +79,7 @@ To address Q1, we evaluate the LLM's performance on Named Entities Recognition (
 For each task, we choose a pertinent dataset and analyse the performance of each LLM on that specific dataset.
 
 % The interaction with the LLMs is then performed using three different strategies: zero-shot, few-shot, and fine-tuning (instruct-based generation). 
-% For the specific case of few-shot training, the way information is provided can be implemented with three strategies: a) provide a definition in the prompt, b) provide examples in the prompt, and, c) provide both. 
+% For the specific case of few-shot prompting, the way information is provided can be implemented with three strategies: a) provide a definition in the prompt, b) provide examples in the prompt, and, c) provide both. 
 % It is crucial to emphasise the significant data requirements for both few-shot and instruct-based generation, for achieving satisfactory results in tasks that involve handling complex vocabulary, particularly in the context of materials science.
 
 % RE
@@ -99,24 +101,25 @@ For this reason, we introduce a novel evaluation method for material names, whic
 We summarise our contributions as follows: 
 
 \begin{itemize}
-    \item We evaluated and compared LLMs on information extraction, in particular NER of materials and properties. This contribution addresses Q1. 
+    \item We designed and ran a benchmark for LLMs on information extraction, in particular NER of materials and properties. This contribution addresses Q1. 
     \item We evaluated LLMs on RE on entities in the context of materials science. This contribution addresses Q2.
     \item We propose a novel approach for evaluating Information Extraction tasks applied to materials entities which leverage formulas matching via pairwise element comparison.
 \end{itemize}
 
 
-\section{Related Work}
+% \section{Related Work}
 
-Numerous studies have delved into the evaluation of Large Language Models (LLMs) within the scientific domain. However, the rapid advancement in this field poses a significant challenge in synthesising all relevant background studies. Initial assessments of ChatGPT highlighted its proficiency in general tasks, though it fell short in specific areas compared to state-of-the-art (SOTA) models~\cite{kokon2023chatgpt}. In the biomedical domain, the early Curie model struggled to outperform BioBERT in few-shot training scenarios~\cite{moradi2022gpt3}.
+% Numerous studies have delved into the evaluation of Large Language Models (LLMs) within the scientific domain. However, the rapid advancement in this field poses a significant challenge in synthesising all relevant background studies. Initial assessments of ChatGPT highlighted its proficiency in general tasks, though it fell short in specific areas compared to state-of-the-art (SOTA) models~\cite{kokon2023chatgpt}. In the biomedical domain, the early Curie model struggled to outperform BioBERT in few-shot prompting scenarios~\cite{moradi2022gpt3}.
 
-A study on correlation and causation detection~\cite{jin2023large} observed that ChatGPT's performance did not surpass that of a random model. Additionally, challenges emerged in named entity recognition and classification (NERC) for historical documents, attributed to potential issues with internet data reliance and inconsistent entity definitions across guidelines~\cite{gonzalez2023yes}.
+% A study on correlation and causation detection~\cite{jin2023large} observed that ChatGPT's performance did not surpass that of a random model. Additionally, challenges emerged in named entity recognition and classification (NERC) for historical documents, attributed to potential issues with internet data reliance and inconsistent entity definitions across guidelines~\cite{gonzalez2023yes}.
 
-In contrast to SLMs like RoBERTa-large, a study~\cite{ma2023large} found that LLMs, including ChatGPT, struggled with tasks such as NER, relation extraction (RE), and event detection (ED) in few-shot training scenarios. However, they proposed a hybrid approach, combining both LLMs and SLMs, demonstrating improved performance on tasks requiring specific knowledge or extensive context.
+% In contrast to SLMs like RoBERTa-large, a study~\cite{ma2023large} found that LLMs, including ChatGPT, struggled with tasks such as NER, relation extraction (RE), and event detection (ED) in few-shot prompting scenarios. However, they proposed a hybrid approach, combining both LLMs and SLMs, demonstrating improved performance on tasks requiring specific knowledge or extensive context.
 
-Another investigation~\cite{tang2023struc} found that GPT3.5-turbo and GPT-4 faced challenges in generating complex output structures like tables, achieving only 3-9\% accuracy on specific formatting constraints. Fine-tuning on a smaller model, significantly improved performance on both seen and unseen structured text generation.
-In materials,~\cite{hatakeyama2023prompt} explored GPT-4’s potential in chemical tasks and other reasoning related to chemical information.
+% Another investigation~\cite{tang2023struc} found that GPT3.5-turbo and GPT-4 faced challenges in generating complex output structures like tables, achieving only 3-9\% accuracy on specific formatting constraints. Fine-tuning on a smaller model, significantly improved performance on both seen and unseen structured text generation.
+% In materials,~\cite{hatakeyama2023prompt} explored GPT-4’s potential in chemical tasks and other reasoning related to chemical information.
 
-Notably, the requirement for a valid JSON output, as reported in this study, introduces additional challenges not commonly addressed in related works focused on conversational aspects~\cite{lin2023llmeval, min2023factscore}.
+% Notably, the requirement for a valid JSON output, as reported in this study, introduces additional challenges not commonly addressed in related works focused on conversational aspects~\cite{lin2023llmeval, min2023factscore}.
+
 
 \section{Method}
 \label{sec:method}
@@ -141,12 +144,12 @@ Detailed values are available in the Supplementary Material section.
 \label{sec:ner}
 The NER task consists of identifying relevant entities: materials, expressed in a multitude of expressions~\cite{lfoppiano2021supermat}, or properties, expressed as physical quantities and measurements~\cite{foppiano2019quantities}. 
 
-We calculated the evaluation scores using four different matching approaches, although we will present only the most relevant to the task (leaving the complete tables in the supplementary materials section): 
+We calculated the evaluation scores using four different matching approaches, although we will present only the most relevant to the task (leaving the complete tables\footnote{The calculation of micro average provides a measure independent of the distribution of the extracted entities over the different documents.} in the supplementary materials section): 
 \begin{itemize}
     \item \textbf{strict}: Exact matching
-    \item \textbf{soft} Matching using Ratcliff/Obershelp with a threshold at 0.9
-    \item \textbf{sbert} Comparison using semantic similarity of sequences using Sentence BERT with a cross-encoder~\cite{reimers2019sentencebert}, applying a threshold set at 0.8.
-    \item \textbf{formula matching} Our novel method to compare materials expressions via formula normalisation and element-by-element exact matching.
+    \item \textbf{soft} Matching using Ratcliff/Obershelp\footnote{\url{https://www.drdobbs.com/database/pattern-matching-the-gestalt-approach/184407970?pgno=5}} with a threshold at 0.9
+    \item \textbf{sentence BERT} Comparison using semantic similarity of sequences using Sentence BERT with a cross-encoder~\cite{reimers2019sentencebert}, applying a threshold set at 0.9
+    \item \textbf{formula matching} Our novel method compares material expressions via formula normalisation and element-by-element exact matching.
 \end{itemize}
 
 Prompts for interacting with LLMs are defined by two components: system and user prompts. 
@@ -195,7 +198,7 @@ Example: "The soda can's volume was 355 ml", the quantity is "355 ml".
 Extract all the Quantities in the text.
 \end{lstlisting}
 
-We implemented the few-shot training by reusing the same prompts and injecting a list of suggestions that were extracted from the text using the respective SLM based on the BERT-encoder for materials and properties: grobid-superconductors~\cite{lfoppiano2023automatic}, and grobid-quantities~\cite{foppiano2019quantities}, respectively.
+We implemented the few-shot prompting by reusing the same prompts and injecting a list of suggestions that were extracted from the text using the respective SLM based on the BERT-encoder for materials and properties: grobid-superconductors~\cite{lfoppiano2023automatic}, and grobid-quantities~\cite{foppiano2019quantities}, respectively.
 Since the suggestions are provided by another model, they are not correct 100\% of the time, we stressed in the prompt that they are examples or hints, that the LLMs could ignore. 
 
 We applied few-shot learning by incorporating in the prompt templates a set of suggestions derived from the text through the respective SLMs based on materials (grobid-superconductors~\cite{lfoppiano2023automatic}) and properties extraction (grobid-quantities~\cite{foppiano2019quantities}). 
@@ -260,7 +263,7 @@ If you are not sure, don't try to make up your answer, just answer "None".
 
 We add specific rules to avoid the creation of invalid groups of relations: responses containing entities that are not supplied in the user prompt, or empty relation blocks. 
 
-% \begin{lstlisting}[caption=Relation extraction using zero-shot training]
+% \begin{lstlisting}[caption=Relation extraction using zero-shot prompting]
 % Consider the following text in between triple quotes: 
 % """
 % {text}
@@ -277,7 +280,7 @@ We add specific rules to avoid the creation of invalid groups of relations: resp
 
 The prompt for few-shot learning was assembled by injecting two examples listed between two "--------" in the prompt for zero-shot learning:
 
-\begin{lstlisting}[caption=Few-shot training for extracting relations from lists of entities]
+\begin{lstlisting}[caption=Few-shot prompting for extracting relations from lists of entities]
 Given a text between triple quotes and a list of entities, find the relations between entities of different classes: 
 """
 {text}
@@ -305,14 +308,14 @@ Apply strictly the following rules:
     - if tc is not specified in absolute values, ignore the relation block 
 \end{lstlisting}
 
-% The fine-tuned was implemented using the prompt used for the zero-shot training provided to a model that was fine-tuned using a partition of SuperMat (344 examples for training and 148 examples for testing) and evaluated with the rest (88 examples). One example represents a unique paragraph with multiple relations within.
+% The fine-tuned was implemented using the prompt used for the zero-shot prompting provided to a model that was fine-tuned using a partition of SuperMat (344 examples for training and 148 examples for testing) and evaluated with the rest (88 examples). One example represents a unique paragraph with multiple relations within.
 
 The list of entities supplied to the Language Model (LLM) might be derived based on their order of appearance, creating a scenario where a model generating relations sequentially may achieve an inflated score that doesn't accurately reflect its relational inference capabilities. 
 To address this, we offer two versions for each model and generation type: a \emph{non-shuffled} version, where entities are presented in their original order, and a \emph{shuffled} version, where entities are randomly rearranged before being introduced to the prompt.
 
 \subsection{Consideration about the fine-tuning}
 
-We fine-tuned the GPT-3.5-turbo model using the OpenAI platform which ingested two files (training and testing) and generated a new model in a few hours. 
+We fine-tuned the GPT-3.5-turbo model using the OpenAI platform which ingested train and test data, and generated a new model in a few hours. 
 All models were trained using the default parameters selected by the OpenAI platform.
 
 Table~\ref{tab:amount-data-fine-tuned} illustrates the dimension of each dataset. 
@@ -369,33 +372,33 @@ The evaluation of grobid-quantities~\cite{foppiano2019quantities} against MeasEv
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/ner-measeval-all.png} 
+  \includegraphics[width=0.78\textwidth]{figures/ner-measeval-all.png} 
   \caption{Comparison scores for properties extraction NER generation. The scores are the aggregations of the micro average F1 scores. The evaluation scores are calculated using soft matching with a threshold of 0.9 similarity. The error bars are calculated over the standard deviation of three independent runs.}
   \label{fig:ner-measeval-all}
 \end{figure}
 
-Unexpectedly, none of the models managed to outperform grobid-quantities in zero-shot learning, as depicted in Figure~\ref{fig:ner-measeval-all}. This outcome is surprising considering that a) the expression of properties lacks a specific domain constraint (aside from potential variations in frequency distribution), and b) quantities and measurements are likely prevalent in the extensive text corpus used to pretrain the OpenAI models.
+Unexpectedly, none of the models managed to outperform grobid-quantities in zero-shot learning, as depicted in Figure~\ref{fig:ner-measeval-all}. This outcome is surprising considering that a) the expression of properties lacks a specific domain constraint (aside from potential variations in frequency distribution), and b) quantities and measurements are likely prevalent in the extensive text corpus used to pre-train the OpenAI models.
+In the realm of few-shot prompting (Figure~\ref{fig:ner-measeval-all}), a marginal improvement was observed only for GPT-4 and GPT-4-Turbo, resulting in an F1-score gain ranging around 2\%. 
 
-In the realm of few-shot training (Figure~\ref{fig:ner-measeval-all}), a marginal improvement was observed only for GPT-4 and GPT-4-Turbo, resulting in an F1-score gain ranging from 2\% to 5\%. 
 However, this improvement is not substantial. 
 We theorise that the hints provided to the Language Models (LLMs) may introduce bias, and when these hints are incorrect or incomplete, the LLMs struggle to guide the generation effectively, impacting the quality of the output results.
-Significantly, the fine-tuned model (Figure~\ref{fig:ner-measeval-all}) appears to exhibit a slight enhancement compared to zero-shot, few-shot, and the baseline. Interestingly, in this specific instance where both the baseline and fine-tuned models are trained and evaluated on the same data, the LLM demonstrates an approximate 3\% increase in F1-score.
+Significantly, the fine-tuned model (Figure~\ref{fig:ner-measeval-all}) appears to exhibit a slight enhancement compared to zero-shot, few-shot, and the baseline. Interestingly, in this specific instance where both the baseline and fine-tuned models are trained and evaluated on the same data, the LLM demonstrates an approximate 3\% increase in the F1-score.
 
-\subsubsection{Extraction of materials expressions}
+\subsection{NER on materials expressions extraction}
 \label{sec:results-ner-materials}
 The evaluation of material expressions was performed using the validation partition of the SuperMat~\cite{lfoppiano2021supermat} dataset, composed of 32 articles.
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.8\textwidth]{figures/ner-supermat-all.png} 
-  \caption{Comparison scores for the NER on materials extraction of the three models. The metrics are the aggregations of the micro average F1-scores, calculated using formulas matching. The error bars are calculated over the standard deviation of three independent runs.}
+  \caption{Comparison scores for the NER on materials extraction of the three models. The metrics are the aggregations of the micro average F1-scores, calculated using formula matching. The error bars are calculated over the standard deviation of three independent runs.}
   \label{fig:ner-materials-all}
 \end{figure}
 
-In zero-shot training (Figure~\ref{fig:ner-materials-all}), both GPT-4 and GPT-4-Turbo achieved comparable F1-scores, hovering around 60\%. Notably, all Language Models (LLMs) scored more than 10\% lower compared to the baseline~\cite{lfoppiano2023automatic}. This disparity is expected, given that material expressions may involve extensive sequences and encompass multiple pieces of information that are not easily conveyed in the prompt.
-Few-shot training (Figure~\ref{fig:ner-materials-all}) yielded improved results, with GPT-3.5-turbo and GPT-4 slightly surpassing the baseline. 
+In zero-shot prompting (Figure~\ref{fig:ner-materials-all}), both GPT-4 and GPT-4-Turbo achieved comparable F1-scores, hovering around 50\%. Notably, all LLMs scored more than 10\% lower than the baseline~\cite{lfoppiano2023automatic}. This disparity is expected, given that material expressions may involve extensive sequences and encompass multiple pieces of information that are not easily conveyed in the prompt.
+Few-shot prompting (Figure~\ref{fig:ner-materials-all}) yielded improved results, with GPT-3.5-turbo and GPT-4 slightly surpassing the baseline. 
 The introduction of hints in the prompt indeed enhances performance, but, as previously discussed, it appears to strongly influence the LLMs, particularly to mitigate the impact of invalid hints that may be provided.
-Equally unexpected, fine-tuning did not outperform few-shot training. This outcome suggests that the additional training did not significantly enhance the LLMs' ability to handle material expressions.
+Equally unexpected, fine-tuning did not outperform few-shot prompting. This outcome suggests that the additional training did not significantly enhance the LLMs' ability to handle material expressions.
 
 \subsection{Relation extraction}
 \label{sec:results-re}
@@ -413,7 +416,7 @@ GPT-3.5-turbo demonstrates a significant difference between shuffled and non-shu
 Notably, the fine-tuned GPT-3.5-turbo model shows reduced flexibility, evident in a decreased F1 score during shuffled evaluation compared to the base model. 
 In contrast, both GPT-4 and GPT-4-turbo exhibit minimal performance differences under shuffling conditions.
 
-Figure~\ref{fig:re-eval-shuffled-all} specifically highlights the shuffled version of each model and extraction type. Except for GPT-3.5.5-turbo, few-shot training exhibits a substantial improvement compared to zero-shot training (Figure~\ref{fig:re-eval-shuffled-all}), achieved by incorporating additional examples in each prompt. 
+Figure~\ref{fig:re-eval-shuffled-all} specifically highlights the shuffled version of each model and extraction type. Except for GPT-3.5.5-turbo, few-shot prompting exhibits a substantial improvement compared to zero-shot prompting (Figure~\ref{fig:re-eval-shuffled-all}), achieved by incorporating additional examples in each prompt. 
 Among the models, GPT-4-turbo attains the highest performance, reaching around an 80\% F1-score.
 
 \begin{figure}[htbp]
@@ -423,38 +426,43 @@ Among the models, GPT-4-turbo attains the highest performance, reaching around a
   \label{fig:re-eval-shuffled-all}
 \end{figure}
 
+\section{Code availability}
+This work is available at \url{https://github.com/lfoppiano/MatSci-LumEn}. The repository contains the scripts and the data used for extraction and evaluation. 
+The code of the material parser used in the formula matching is available at \url{https://github.com/lfoppiano/material-parsers}, and the service API is accessible at \url{https://lfoppiano-material-parsers.hf.space}. 
+
 \section{Conclusion}
 
-When it comes to entity extraction (NER), Large Language Models (LLMs) appear to underperform significantly compared to SLMs in both material and property extraction. 
+When it comes to NER, LLMs appear to underperform significantly compared to SLMs in both material and property extraction (Q1)
 This finding is particularly surprising considering properties since these expressions are not confined to a specific domain.
 
-In material extraction, fine-tuning failed to surpass the baseline, and the same holds true for few-shot training. Our results suggest that, for material expressions, small specialised models remain the most accurate choice.
+In material extraction, GPT3.5-turbo with fine-tuning failed to surpass the baseline, and the same holds for any model with few-shot prompting. 
+For property extraction, GPT-4 and GPT-4 Turbo with zero-shot prompting perform on par with the baseline. GPT3.5-Turbo with few-shot and fine-tuning, on the other hand, outperform the baseline by a marginal increase in points.
+Our results suggest that, for material expressions, small specialised models remain the most accurate choice.
 
-For property extraction, zero-shot training performs on par with the baseline for GPT-4 and GPT-4 Turbo. Few-shot and fine-tuning, on the other hand, outperform the baseline by a marginal increase in points.
-
-The scenario improves for RE:
-\begin{enumerate}
-\item Few-shot training, with two examples, demonstrates a significant improvement over the baseline.
-\item GPT-4 Turbo exhibits enhanced reasoning capabilities compared to GPT-4 and GPT-3.5 Turbo.
-\item GPT-3.5 Turbo performs poorly in both zero-shot and few-shot training and shows a substantial score decrease when entities are shuffled, aligning with previous observations.
-\end{enumerate}
+The scenario improves for RE (Q2).
+With two examples, few-shot prompting demonstrates a significant improvement over the baseline.
+GPT-4 Turbo exhibits enhanced reasoning capabilities compared to GPT-4 and GPT-3.5 Turbo.
+GPT-3.5 Turbo performs poorly in both zero-shot and few-shot prompting and shows a substantial score decrease when entities are shuffled, aligning with previous observations.
     
 Fine-tuning, overall, does not appear to address all the challenges in both tasks and may struggle to learn to respond to a valid JSON format.
 
-In conclusion, GPT-4 and GPT-4-Turbo showcase effective reasoning capabilities for relating concepts and extracting relations accurately. 
+In conclusion, to answer Q2, GPT-4 and GPT-4-Turbo showcase effective reasoning capabilities for relating concepts and extracting relations accurately. 
 GPT-4-Turbo, which costs one-third of GPT-4 remains a robust choice given its reasoning capabilities. 
-However, for the extraction of complex entities such as materials, we find that training small specialised models remains a more effective approach.
+However, for what concerns Q1, for the extraction of complex entities such as materials, we find that training small specialised models remains a more effective approach.
 
 \section*{Acknowledgements}
 Our warmest thanks to Patrice Lopez for his continuous support and inspiration with ideas, suggestions, and fruitful discussions.
 
 
 \section*{Funding}
-This work was partly supported by MEXT Program: Data Creation and Utilization-Type Material Research and Development Project (Digital Transformation Initiative Center for Magnetic Materials) Grant Number JPMXP1122715503.
+This work was partly supported by the MEXT Program: Data Creation and Utilization-Type Material Research and Development Project (Digital Transformation Initiative Center for Magnetic Materials) Grant Number JPMXP1122715503.
 
 
 \section*{Notes on Contributors}
-TBA
+LF developed the scripts for extraction and evaluation and wrote the manuscript.
+GL followed the LLM evaluation and technical side and financed the OpenAI bills. 
+TA, GL and MI reviewed the article.
+MI supervised the process and provided the budget. 
 
 
 

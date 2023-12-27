@@ -55,3 +55,115 @@
 %  - information that we can extract with NER, are likely correct (no hallucination, no false information)
 %  - so we can anchor the attention to property values, and build back our data
 %  - like a painter, we probably need to perform several passages to consolidate the information 
+
+
+
+-----
+
+
+New rewritten introduction 
+
+
+% Why is important?
+Mining experimental data from scientific publications has become increasingly popular in materials science due to the vast amount of information available and the need for accelerating materials discovery using data-driven techniques.
+
+
+% A substantial volume of experimental data needs to be gathered, primarily sourced from findings published in scientific articles.
+% Nonetheless, this data comes in various forms: unstructured textual content and structured tables and graphs, adding complexity to the extraction process. 
+% As a result, many projects still depend on manual data extraction.
+% While there are a few extensive structured databases containing accumulated experimental data, they remain limited in number when compared to the numerous projects within the field of materials science research.
+
+% Why is challenging?
+% Many projects still depend on manual processing, however, addressing issues related to data quality and interpretation demands meticulous curation and specialised domain knowledge.
+However, when dealing with this literature, one must possess a profound comprehension of the laws of chemistry and physics and the skill to navigate through a maze of jargon, intricate vocabularies, and specialised terminology unique to each sub-domain. 
+For instance, in the field of superconductors, experts in the domain categorise materials into classes, which are sometimes defined arbitrarily, blending compound-based classes like \textit{cuprates} and \textit{iron-based} materials with phenomenon-based classes like \textit{fermions}. 
+[Maybe we can replace this example with another field?]
+Moreover, there exists substantial confusion due to the frequent overuse of certain terms. For instance, the acronym "TC" is often employed to denote "Temperature Curie," while "Tc" signifies "superconducting critical temperature".
+% In permanent magnetic materials research, the measured properties are intricately linked with the processes of diffusion and synthesis of the initial magnets.
+
+%This work is to evaluate the potential of LLM through a comparison of SLM and LLM.  
+%After describing the limitations of SLM, it would be good to set out the issues and then state a hypothesis that LLM can be a solution to them while providing evidence for the hypothesis.
+%The most appropriate storyline for an academic paper would be that the paper describes an experiment to prove the hypothesis, and the hypothesis is proven in the conclusion.
+
+% Limitations in supporting new sub-domains or extracting new information
+Because of these conventions and requirements, the participation of domain experts is essential.
+Furthermore, the construction of new processes demands the time-consuming task of collecting a substantial amount of data.
+Additionally, standard machine learning models operate within a limited context window (e.g. 512 tokens for BERT-based encoders). This restricts tasks like distant relation extraction or identifying material entities defined by long sequences like complex chemical formulas.
+
+% LLM could be helpful on this 
+The emergence of Large Language Models (LLMs) has introduced a new wave of transformative technology with vast potential~\cite{openai2023gpt4}. With their gigantic parameters and vast data, LLMs possess unmatched capabilities of generating perfectly written text~\cite{lee2020patent, dou2021gpt} and carrying out nuanced conversational reasoning.
+LLMs provide a remarkably more versatile approach compared to previous state-of-the-art models. Their strength lies in flexible prompt-based interactions that can be easily tailored and adjusted to suit the needs of various tasks. A researcher can simply provide the LLM with a prompt encapsulating the desired context, problem, and format of the output required~\cite{ouyang2022training}. This makes scaling to new use cases and pivoting directions much simpler compared to typical model development.
+Additionally, LLMs are centrally deployed on the cloud, enabling access via user-friendly APIs. This massively reduces the infrastructure, hardware, and energy costs that one would otherwise incur in decentralised settings. Researchers can simply use the API without worrying about computational demands or hardware maintenance.
+
+% The demand for structured data necessitates the extraction of more intricate information in a flexible manner. 
+While LLMs offer a promising opportunity to accelerate the advancement of Text and Data Mining (TDM) processes, their capabilities are currently the subject of ongoing research. Despite their potential, the full extent of their effectiveness and limitations is still being explored.
+
+% What is our hypothesis 
+
+The fundamental components of materials science knowledge can be grouped into materials and properties expressions. 
+Properties (e.g. critical temperature, 4K) are expressed using quantities and measurements: they exhibit a structured format, including modifiers, values, and units, with a wide range of potential values. 
+In contrast, materials are conceptually fluid and often depend on the specific domain. They may necessitate a substantial amount of accompanying text for a comprehensive description, which can encompass details like doping ratio, substrate, and other characteristics. 
+From a chemical standpoint, materials are defined by their chemical formula. 
+However, in practice, scientists frequently employ names such as commercial names, well-known terms, or invented designations to describe samples, all of which serve to streamline information in research papers. Nonetheless, conveying such definitions unambiguously can be challenging.
+
+Previous studies in Information Extraction (IE) have shown evidence of LLMs proficiency in general tasks while falling short in specific areas~\cite{kokon2023chatgpt}. 
+In particular, LLMs did not outperform SLMs in most of the discriminative tasks such as named entity recognition (NER), relation extraction (RE) and event detections (ED) in general domains~\cite{ma2023large}, in history~\cite{gonzalez2023yes}, and biology~\cite{moradi2022gpt3}.
+
+Based on this evidence, we hypothesised that LLMs may encounter challenges in handling intricate material definitions. However, there is optimism that properties expressed in a more generalized, broad, and structured manner could be more effectively managed by these models. 
+
+Further investigation is required to validate this hypothesis and gain a nuanced understanding of LLMs' capabilities in managing diverse types of textual content.
+
+
+
+
+Given the short number of studies that cover specifically materials science in the scope of data extraction, this study aims to assess LLMs' ability to comprehend, manipulate, and reason with complex information that demands substantial background knowledge as in Materials Science. 
+
+% Goals 
+The objectives of this work can be summarised in the following questions: 
+\begin{itemize}
+    \item \textbf{Q1}: \textit{How effectively can LLMs extract materials science-related information?}
+    \item \textbf{Q2}: \textit{To what extent can LLMs engage in reasoning to relate complex concepts?}
+\end{itemize}
+
+% Method
+
+
+
+% NER
+To address Q1, we evaluate the LLM's performance on Named Entities Recognition (NER) tasks related to materials and properties extraction.
+For each task, we choose a pertinent dataset and analyse the performance of each LLM on that specific dataset.
+
+% The interaction with the LLMs is then performed using three different strategies: zero-shot, few-shot, and fine-tuning (instruct-based generation). 
+% For the specific case of few-shot training, the way information is provided can be implemented with three strategies: a) provide a definition in the prompt, b) provide examples in the prompt, and, c) provide both. 
+% It is crucial to emphasise the significant data requirements for both few-shot and instruct-based generation, for achieving satisfactory results in tasks that involve handling complex vocabulary, particularly in the context of materials science.
+
+% RE
+We address Q2 by assessing the capability to establish connections between a predefined set of entities and extract relationships within a given context.  
+% The baseline is defined by a rule-based approach we have developed in previous work~\cite{lfoppiano2023automatic}. 
+% The interaction with the LLMs is performed only using: zero-shot, few-shot and fine-tuning.  
+
+In both cases, we compare the outcomes against a baseline determined by scores achieved on the same datasets by either a BERT-based encoder or a rule-based algorithm we have developed in previous work.
+Our requirement is for the models to be capable of generating output in a valid JSON format as part of our efforts to extract structured databases.
+ 
+% Evaluation matching 
+While traditional SMLs classify individual tokens in the input, evaluating their performance against expected datasets involves a straightforward comparison of values. Soft-matching techniques can be employed to overlook minor discrepancies. 
+However, with generative models, the output tokens may be structured in ways that significantly differ from the original input sequence. 
+In more general scenarios, semantic models that compare the vectorised representations of two sequences can be utilised~\cite{reimers2019sentencebert}. 
+Nevertheless, when dealing with concepts like material expressions, a specialised approach is needed. 
+As an illustration, the terms "solar cell" and "solar cells" represent identical concepts, yet the materials denoted by "Fe" and "Fn" are entirely distinct, highlighting a difference of just one letter between the two examples.
+For this reason, we introduce a novel evaluation method for material names, which involves normalising materials to their chemical formulas before conducting a pairwise comparison of each element. This approach provides a more meaningful and context-aware assessment of the model's performance.
+
+We summarise our contributions as follows: 
+
+\begin{itemize}
+    \item We evaluated and compared LLMs on information extraction, in particular NER of materials and properties. This contribution addresses Q1. 
+    \item We evaluated LLMs on RE on entities in the context of materials science. This contribution addresses Q2.
+    \item We propose a novel approach for evaluating Information Extraction tasks applied to materials entities which leverage formulas matching via pairwise element comparison.
+\end{itemize}
+
+
+
+% Another investigation~\cite{tang2023struc} found that GPT3.5-turbo and GPT-4 faced challenges in generating complex output structures like tables, achieving only 3-9\% accuracy on specific formatting constraints. Fine-tuning on a smaller model, significantly improved performance on both seen and unseen structured text generation.
+% In materials,~\cite{hatakeyama2023prompt} explored GPT-4’s potential in chemical tasks and other reasoning related to chemical information.
+
+% Notably, as reported in this study, the requirement for a valid JSON output introduces additional challenges not commonly addressed in related works focused on conversational aspects~\cite{lin2023llmeval, min2023factscore}.
