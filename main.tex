@@ -28,6 +28,15 @@
 
 \maketitle
 
+\begin{abstract}
+This work aims to assess the ability of large language models (LLMs) GPT-3.5-Turbo, GPT-4, and GPT-4-Turbo to extract structured information from scientific documents in materials science. 
+Addressing the challenge of materials-based information evaluation, we propose a new approach for comparing complex material expressions based on formula normalisation. 
+We focus on two key information extraction tasks: named entity recognition (NER) of materials and properties, and relation extraction (RE) between materials and properties. 
+We compare the performance of LLMs on these tasks to baseline systems using BERT-based models and rule-based approaches. 
+For NER the LLMs fail to outperform the baseline in zero-shot prompting and achieve only marginal gains with few-shot prompting. For RE, GPT-4 and GPT-4 Turbo demonstrate effective reasoning and relation extraction capabilities when given just two examples, outperforming the baseline. 
+Overall, the results suggest that while LLMs showcase reasoning abilities in relating concepts, their performance in extracting complex domain entities like materials remains limited compared to small specialised models. 
+\end{abstract}
+
 \section{Introduction}
 
 % Why is important?
@@ -449,6 +458,7 @@ Fine-tuning, overall, does not appear to address all the challenges in both task
 In conclusion, to answer Q2, GPT-4 and GPT-4-Turbo showcase effective reasoning capabilities for relating concepts and extracting relations accurately. 
 GPT-4-Turbo, which costs one-third of GPT-4 remains a robust choice given its reasoning capabilities. 
 However, for what concerns Q1, for the extraction of complex entities such as materials, we find that training small specialised models remains a more effective approach.
+
 
 \section*{Acknowledgements}
 Our warmest thanks to Patrice Lopez for his continuous support and inspiration with ideas, suggestions, and fruitful discussions.
