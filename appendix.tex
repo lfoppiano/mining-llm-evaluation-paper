@@ -1,6 +1,6 @@
 
-
 \section{Full evaluation results}
+\label{appendix:full-evaluation-results}
 
 \subsection{NER for properties extraction}
 
@@ -401,25 +401,25 @@
 \begin{table}[htbp]
   \small
   \centering
-  \caption{Performance Metrics for the GPT3.5-turbo model on RE in materials-properties extraction. In this run, entities are not shuffled when included in the prompt. P: Precision, R: Recall, F1: harmonic average of P and R, Supp: Support, number of extracted entities.}
+  \caption{Performance Metrics for the GPT3.5-turbo model on RE in materials-properties extraction. In this run, the entities are used as they appear in the input data when included in the prompt. P: Precision, R: Recall, F1: harmonic average of P and R, Supp: Support, number of extracted entities.}
   \begin{tabular}{lccccc}
     \toprule
     \textbf{Run} & \textbf{Matching} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Supp} \\
     \midrule
-    \multirow{2}{*}{Run1} & Strict matching & 80.41 & 65.7 & 72.32 & 934 \\
-    & Soft matching & 80.73 & 65.97 & 72.6 & 934 \\
+    \multirow{2}{*}{Run1} & Strict matching & 79.90 & 55.29 & 65.36 & 791 \\
+    & Soft matching & 80.15 & 55.47 & 65.56 & 791 \\
     \midrule
-    \multirow{2}{*}{Run2} & Strict matching & 80.41 & 54.59 & 65.03 & 776 \\
-    & Soft matching & 80.8 & 54.86 & 65.35 & 776 \\
+    \multirow{2}{*}{Run2} & Strict matching & 80.13 & 54.33 & 64.75 & 775 \\
+    & Soft matching & 80.52 & 54.59 & 65.07 & 775 \\
     \midrule
-    \multirow{2}{*}{Run3} & Strict matching & 80.25 & 55.47 & 65.6 & 790 \\
-    & Soft matching & 80.51 & 55.64 & 65.8 & 790 \\
+    \multirow{2}{*}{Run3} & Strict matching & 80.74 & 55.03 & 65.45 & 779 \\
+    & Soft matching & 81.00 & 55.21 & 65.66 & 779 \\
     \midrule
     \multicolumn{2}{l}{\textbf{Mean and Standard deviation of F1 score}} & & & & \\
     \midrule
     \textbf{Matching} & \textbf{Avg.} & $\sigma\textsuperscript{2}$ & & & \textbf{Avg. Supp}\\
-    Strict matching & 67.65 & 4.05 & & & 833 \\
-    Soft matching & 67.91 & 4.06 & & & \\
+    Strict matching & 65.18 & 0.38 & & & 781 \\
+    Soft matching & 65.43 & 0.31 & & & \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -428,25 +428,25 @@
 \begin{table}[htbp]
     \small
     \centering
-    \caption{Performance Metrics for the GPT3.5-turbo model on RE in materials-properties extraction. In this run, entities are shuffled to make it more challenging for the LLM. P: Precision, R: Recall, F1: harmonic average of P and R, Supp: Support, number of extracted entities.}
+    \caption{Performance Metrics for the GPT3.5-turbo model on RE in materials-properties extraction. In this run, we shuffle entities to make it more challenging for the LLM. P: Precision, R: Recall, F1: harmonic average of P and R, Supp: Support, number of extracted entities.}
     \begin{tabular}{lccccc}
         \toprule
         \textbf{Run} & \textbf{Matching} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Supp} \\
         \midrule
-        \multirow{2}{*}{Run1} & Strict matching & 76.12 & 60.8 & 67.61 & 913 \\
-        & Soft matching & 76.67 & 61.24 & 68.09 & 913 \\
+        \multirow{2}{*}{Run1} & Strict matching & 76.01 & 51.27 & 61.23 & 771 \\
+        & Soft matching & 76.91 & 51.88 & 61.96 & 771  \\
         \midrule
-        \multirow{2}{*}{Run2} & Strict matching & 72.08 & 48.56 & 58.02 & 770 \\
-        & Soft matching & 73.12 & 49.26 & 58.86 & 770 \\
+        \multirow{2}{*}{Run2} & Strict matching & 75.82 & 50.74 & 60.80 & 765 \\
+        & Soft matching & 76.34 & 51.09 & 61.22 & 765 \\
         \midrule
-        \multirow{2}{*}{Run3} & Strict matching & 74.9 & 49.61 & 59.68 & 757 \\
-        & Soft matching & 75.17 & 49.78 & 59.89 & 757 \\
+        \multirow{2}{*}{Run3} & Strict matching & 76.55 & 52.84 & 62.53 & 789 \\
+        & Soft matching & 77.19 & 53.28 & 63.04 & 789  \\
         \midrule
         \multicolumn{2}{l}{\textbf{Mean and Standard deviation of F1 score}} & & & & \\
         \midrule
         \textbf{Matching} & \textbf{Avg.} & $\sigma\textsuperscript{2}$ & & & \textbf{Avg. Supp}\\
-        Strict matching & 61.77 & 5.12 & & & 813 \\
-        Soft matching & 62.28 & 5.05 & & \\
+        Strict matching & 61.52 & 0.90 & & & 775 \\
+        Soft matching & 62.07 & 0.91 & & \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -574,20 +574,20 @@
         \toprule
         \textbf{Run} & \textbf{Matching} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Supp} \\
         \midrule
-        \multirow{2}{*}{Run1} & Strict matching & 67.97 & 50.31 & 57.82 & 846 \\
-        & Soft matching & 69.27 & 51.27 & 58.92 & 846 \\
+        \multirow{2}{*}{Run1} & Strict matching & 76.38 & 70.17 & 73.14 & 1050 \\
+        & Soft matching & 76.95 & 70.69 & 73.69 & 1050 \\
         \midrule
-        \multirow{2}{*}{Run2} & Strict matching & 68.2 & 50.48 & 58.02 & 846 \\
-        & Soft matching & 69.5 & 51.44 & 59.13 & 846 \\
+        \multirow{2}{*}{Run2} & Strict matching & 75.78 & 69.82 & 72.68 & 1053 \\
+        & Soft matching & 76.35 & 70.34 & 73.22 & 1053 \\
         \midrule
-        \multirow{2}{*}{Run3} & Strict matching & 69.23 & 50.39 & 58.33 & 832 \\
-        & Soft matching & 71.18 & 51.09 & 59.14 & 832 \\
+        \multirow{2}{*}{Run3} & Strict matching & 75.93 & 69.82 & 72.74 & 1051 \\
+        & Soft matching & 76.78 & 70.6 & 73.56 & 1051 \\
         \midrule
         \multicolumn{2}{l}{\textbf{Mean and Standard deviation of F1 score}} & & & & \\
         \midrule
         \textbf{Matching} & \textbf{Avg.} & $\sigma\textsuperscript{2}$ & & & \textbf{Avg. Supp}\\
-        Strict matching & 58.05 & 0.25 & & & 841 \\
-        Soft matching & 59.06 & 0.12 & & & \\
+        Strict matching & 72.85 & 0.25 & & & 1051 \\
+        Soft matching & 73.49 & 0.24 & & & \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -602,20 +602,20 @@
         \toprule
         \textbf{Run} & \textbf{Matching} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Supp} \\
         \midrule
-        \multirow{2}{*}{Run1} & Strict matching & 63.97 & 47.68 & 54.64 & 852 \\
-        & Soft matching & 66.08 & 49.26 & 56.44 & 852 \\
+        \multirow{2}{*}{Run1} & Strict matching & 72.66 & 66.49 & 69.44 & 1046 \\
+        & Soft matching & 73.52 & 67.28 & 70.26 & 1046 \\
         \midrule
-        \multirow{2}{*}{Run2} & Strict matching & 66.02 & 47.59 & 55.31 & 824 \\
-        & Soft matching & 67.23 & 48.47 & 56.33 & 824 \\
+        \multirow{2}{*}{Run2} & Strict matching & 72.61 & 65.18 & 68.7 & 1026 \\
+        & Soft matching & 74.07 & 66.49 & 70.08 & 1026 \\
         \midrule
-        \multirow{2}{*}{Run3} & Strict matching & 62.24 & 45.14 & 52.33 & 829 \\
-        & Soft matching & 63.93 & 46.37 & 53.75 & 829 \\
+        \multirow{2}{*}{Run3} & Strict matching & 73.16 & 66.05 & 69.43 & 1032 \\
+        & Soft matching & 74.42 & 67.19 & 70.62 & 1032 \\
         \midrule
         \multicolumn{2}{l}{\textbf{Mean and Standard deviation of F1 score}} & & & & \\
         \midrule
         \textbf{Matching} & \textbf{Avg.} & $\sigma\textsuperscript{2}$ & & & \textbf{Avg. Supp}\\
-        Strict matching & 54.09 & 1.56 & & & 835 \\
-        Soft matching   & 55.50 & 1.52 & & \\
+        Strict matching & 72.85 & 0.25 & & & 1051 \\
+        Soft matching   & 73.49 & 0.24 & & \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -624,25 +624,25 @@
 \begin{table}[htbp]
     \small
     \centering
-    \caption{Performance Metrics for the GPT4 model on RE in materials-properties extraction. In this run, entities are not shuffled when they are added to the prompt. P: Precision, R: Recall, F1: harmonic average of P and R, Supp: Support, number of extracted entities.}
+    \caption{Performance Metrics for the GPT4 model on RE in materials-properties extraction. In this run, entities are not shuffled when added to the prompt. P: Precision, R: Recall, F1: harmonic average of P and R, Supp: Support, number of extracted entities.}
     \begin{tabular}{lccccc}
         \toprule
         \textbf{Run} & \textbf{Matching} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Supp} \\
         \midrule
-        \multirow{2}{*}{Run1} & Strict matching & 80.57 & 71.83 & 75.95 & 1019 \\
-        & Soft matching & 80.57 & 71.83 & 75.95 & 1019 \\
+        \multirow{2}{*}{Run1} & Strict matching & 82.41 & 74.19 & 78.08 & 1029 \\
+        & Soft matching & 82.41 & 74.19 & 78.08 & 1029 \\
         \midrule
-        \multirow{2}{*}{Run2} & Strict matching & 81.29 & 72.62 & 76.71 & 1021 \\
-        & Soft matching & 81.39 & 72.7  & 76.8 & 1021 \\
+        \multirow{2}{*}{Run2} & Strict matching & 83.32 & 73.84 & 78.29 & 1013 \\
+        & Soft matching & 83.51 & 74.02 & 78.48 & 1013 \\
         \midrule
-        \multirow{2}{*}{Run3} & Strict matching & 80.9 & 72.27 & 76.34 & 1021 \\
-        & Soft matching & 80.9 & 72.27 & 76.34 & 1021 \\
+        \multirow{2}{*}{Run3} & Strict matching & 83.5 & 73.93 & 78.42 & 1012 \\
+        & Soft matching & 83.6 & 74.02 & 78.52 & 1012 \\
         \midrule
         \multicolumn{2}{l}{\textbf{Mean and Standard deviation of F1 score}} & & & & \\
         \midrule
         \textbf{Matching} & \textbf{Avg.} & $\sigma\textsuperscript{2}$ & & & \textbf{Avg. Supp}\\
-        Strict matching & 76.33 & 0.38 & & & 1020 \\
-        Soft matching & 76.36 & 0.42 & & \\
+        Strict matching & 78.26 & 0.17 & & & 1018 \\
+        Soft matching & 78.36 & 0.24 & & \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -657,20 +657,20 @@
         \toprule
         \textbf{Run} & \textbf{Matching} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Supp} \\
         \midrule
-        \multirow{2}{*}{Run1} & Strict matching & 80.57 & 70.17 & 74.5 & 1010 \\
-        & Soft matching & 80.57 & 70.25 & 74.59 & 1010 \\
+        \multirow{2}{*}{Run1} & Strict matching & 81.19 & 72.88 & 76.81 & 1026 \\
+        & Soft matching & 81.19 & 72.88 & 76.81 & 1026 \\
         \midrule
-        \multirow{2}{*}{Run2} & Strict matching & 81.29 & 70.87 & 75.03 & 1016 \\
-        & Soft matching & 81.39 & 71.13 & 75.31 & 1016 \\
+        \multirow{2}{*}{Run2} & Strict matching & 81.19 & 72.88 & 76.81 & 1026 \\
+        & Soft matching & 81.19 & 72.88 & 76.81 & 1026 \\
         \midrule
-        \multirow{2}{*}{Run3} & Strict matching & 80.9 & 70.6 & 75.07 & 1007 \\
-        & Soft matching & 80.9 & 70.6 & 75.07 & 1007 \\
+        \multirow{2}{*}{Run3} & Strict matching & 82.77 & 74.37 & 78.34 & 1027 \\
+        & Soft matching & 82.86 & 74.45 & 78.43 & 1027 \\
         \midrule
         \multicolumn{2}{l}{\textbf{Mean and Standard deviation of F1 score}} & & & & \\
         \midrule
         \textbf{Matching} & \textbf{Avg.} & $\sigma\textsuperscript{2}$ & & & \textbf{Avg. Supp}\\
-        Strict matching & 74.86 & 0.31 & & & 1011 \\
-        Soft matching & 74.99 & 0.36 & & \\
+        Strict matching & 77.46 & 0.78 & & & 1022 \\
+        Soft matching & 77.52 & 0.80 & & \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -685,20 +685,20 @@
         \toprule
         \textbf{Run} & \textbf{Matching} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Supp}\\
         \midrule
-        \multirow{2}{*}{Run1} & Strict matching & 83.44 & 70.08 & 76.18 & 960 \\
-        & Soft matching & 84.69 & 71.13 & 77.32 & 960 \\
+        \multirow{2}{*}{Run1} & Strict matching & 86.48 & 71.65 & 78.37 & 947 \\
+        & Soft matching & 87.54 & 72.53 & 79.33 & 947 \\
         \midrule
-        \multirow{2}{*}{Run2} & Strict matching & 84.1 & 70.34 & 76.61 & 956 \\
-        & Soft matching & 85.46 & 71.48 & 77.85 & 956 \\
+        \multirow{2}{*}{Run2} & Strict matching & 86.01 & 71.57 & 78.13 & 951 \\
+        & Soft matching & 86.01 & 71.57 & 78.13 & 951 \\
         \midrule
-        \multirow{2}{*}{Run3} & Strict matching & 84.01 & 70.34 & 76.57 & 957 \\
-        & Soft matching & 85.37 & 71.48 & 77.81 & 957 \\
+        \multirow{2}{*}{Run3} & Strict matching & 86.67 & 71.13 & 78.14 & 938 \\
+        & Soft matching & 87.53 & 71.83 & 78.9 & 938 \\
         \midrule
         \multicolumn{2}{l}{\textbf{Mean and Standard deviation of F-Score}} & & & & \\
         \midrule
         \textbf{Matching} & \textbf{Avg.} & $\sigma\textsuperscript{2}$ & & & \textbf{Avg. Supp}\\
-        Strict matching & 76.45 & 0.23 & & & 957 \\
-        Soft matching & 77.66 & 0.29 & & \\
+        Strict matching & 78.21 & 0.13 & & & 945 \\
+        Soft matching & 79.04 & 0.25 & & \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -713,20 +713,20 @@
         \toprule
         \textbf{Run} & \textbf{Matching} & \textbf{P} & \textbf{R} & \textbf{F1} & \textbf{Supp} \\
         \midrule
-        \multirow{2}{*}{Run1} & Strict matching & 82.01 & 67.02 & 73.76 & 934 \\
-        & Soft matching & 83.51 & 68.24 & 75.11 & 934 \\
+        \multirow{2}{*}{Run1} & Strict matching & 86.59	70.08	77.47	925 \\
+        & Soft matching & 87.46	70.78	78.24	925 \\
         \midrule
-        \multirow{2}{*}{Run2} & Strict matching & 84.11 & 69.47 & 76.09 & 944 \\
-        & Soft matching & 85.49 & 70.6 & 77.34 & 944 \\
+        \multirow{2}{*}{Run2} & Strict matching & 87.17	70.17	77.75	920\\
+        & Soft matching & 87.93	70.78	78.43	920 \\
         \midrule
-        \multirow{2}{*}{Run3} & Strict matching & 82.31 & 67.98 & 74.46 & 944 \\
-        & Soft matching & 84.32 & 69.64 & 76.28 & 944 \\
+        \multirow{2}{*}{Run3} & Strict matching & 86.15	69.12	76.7	917\\
+        & Soft matching & 87.02	69.82	77.48	917 \\
         \midrule
         \multicolumn{2}{l}{\textbf{Mean and Standard deviation of F-Score}} & & & & \\
         \midrule
         \textbf{Matching} & \textbf{Avg.} & $\sigma\textsuperscript{2}$ & & & \textbf{Avg. Supp}\\
-        Strict matching & 74.77 & 1.19 & & & 940 \\
-        Soft matching & 76.24 & 1.11 & & \\
+        Strict matching & 77.30 & 0.54 & & & 920 \\
+        Soft matching & 78.05 & 0.50 & & \\
         \bottomrule
     \end{tabular}
 \end{table}

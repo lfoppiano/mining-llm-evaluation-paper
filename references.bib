@@ -10,13 +10,11 @@
 	doi          = {10.1016/j.inffus.2023.101861},
 	url          = {https://doi.org/10.1016%2Fj.inffus.2023.101861}
 }
-@misc{moradi2022gpt3,
-	title        = {GPT-3 Models are Poor Few-Shot Learners in the Biomedical Domain},
-	author       = {Milad Moradi and Kathrin Blagec and Florian Haberl and Matthias Samwald},
-	year         = 2022,
-	eprint       = {2109.02555},
-	archiveprefix = {arXiv},
-	primaryclass = {cs.CL}
+@article{moradi2021gpt,
+  title={Gpt-3 models are poor few-shot learners in the biomedical domain},
+  author={Moradi, Milad and Blagec, Kathrin and Haberl, Florian and Samwald, Matthias},
+  journal={arXiv preprint arXiv:2109.02555},
+  year={2021}
 }
 @article{hoffmann2022training,
 	title        = {Training Compute-optimal Large Language Models},
@@ -57,10 +55,10 @@
 	journal      = {arXiv preprint arXiv:2303.17322}
 }
 @article{ma2023large,
-	title        = {Large language model is not a good few-shot information extractor, but a good reranker for hard samples!},
-	author       = {Ma, Y. and Cao, Y. and Hong, Y. and Sun, A.},
-	year         = 2023,
-	doi          = {10.48550/arxiv.2303.08559}
+  title={Large language model is not a good few-shot information extractor, but a good reranker for hard samples!},
+  author={Ma, Yubo and Cao, Yixin and Hong, YongChing and Sun, Aixin},
+  journal={arXiv preprint arXiv:2303.08559},
+  year={2023}
 }
 @inproceedings{lin2023llmeval,
 	title        = {{LLM}-Eval: Unified Multi-Dimensional Automatic Evaluation for Open-Domain Conversations with Large Language Models},
@@ -75,11 +73,23 @@
 	url          = {https://aclanthology.org/2023.nlp4convai-1.5},
 	abstract     = {We propose LLM-Eval, a unified multi-dimensional automatic evaluation method for open-domain conversations with large language models (LLMs). Existing evaluation methods often rely on human annotations, ground-truth responses, or multiple LLM prompts, which can be expensive and time-consuming. To address these issues, we design a single prompt-based evaluation method that leverages a unified evaluation schema to cover multiple dimensions of conversation quality in a single model call. We extensively evaluate the performance of LLM-Eval on various benchmark datasets, demonstrating its effectiveness, efficiency, and adaptability compared to state-of-the-art evaluation methods. Our analysis also highlights the importance of choosing suitable LLMs and decoding strategies for accurate evaluation results. LLM-Eval offers a versatile and robust solution for evaluating open-domain conversation systems, streamlining the evaluation process and providing consistent performance across diverse scenarios.}
 }
-@article{reimers2019sentencebert,
-	title        = {sentence-bert: sentence embeddings using siamese bert-networks},
-	author       = {Reimers, N. and Gurevych, I.},
-	year         = 2019,
-	doi          = {10.18653/v1/d19-1410}
+@inproceedings{reimers2019sentencebert,
+    title = "Sentence-{BERT}: Sentence Embeddings using {S}iamese {BERT}-Networks",
+    author = "Reimers, Nils  and
+      Gurevych, Iryna",
+    editor = "Inui, Kentaro  and
+      Jiang, Jing  and
+      Ng, Vincent  and
+      Wan, Xiaojun",
+    booktitle = "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
+    month = nov,
+    year = "2019",
+    address = "Hong Kong, China",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/D19-1410",
+    doi = "10.18653/v1/D19-1410",
+    pages = "3982--3992",
+    abstract = "BERT (Devlin et al., 2018) and RoBERTa (Liu et al., 2019) has set a new state-of-the-art performance on sentence-pair regression tasks like semantic textual similarity (STS). However, it requires that both sentences are fed into the network, which causes a massive computational overhead: Finding the most similar pair in a collection of 10,000 sentences requires about 50 million inference computations ({\textasciitilde}65 hours) with BERT. The construction of BERT makes it unsuitable for semantic similarity search as well as for unsupervised tasks like clustering. In this publication, we present Sentence-BERT (SBERT), a modification of the pretrained BERT network that use siamese and triplet network structures to derive semantically meaningful sentence embeddings that can be compared using cosine-similarity. This reduces the effort for finding the most similar pair from 65 hours with BERT / RoBERTa to about 5 seconds with SBERT, while maintaining the accuracy from BERT. We evaluate SBERT and SRoBERTa on common STS tasks and transfer learning tasks, where it outperforms other state-of-the-art sentence embeddings methods.",
 }
 @inproceedings{beltagy2020scibert,
 	title        = {{S}ci{BERT}: A Pretrained Language Model for Scientific Text},
@@ -94,11 +104,11 @@
 	url          = {https://aclanthology.org/D19-1371},
 	abstract     = {Obtaining large-scale annotated data for NLP tasks in the scientific domain is challenging and expensive. We release SciBERT, a pretrained language model based on BERT (Devlin et. al., 2018) to address the lack of high-quality, large-scale labeled scientific data. SciBERT leverages unsupervised pretraining on a large multi-domain corpus of scientific publications to improve performance on downstream scientific NLP tasks. We evaluate on a suite of tasks including sequence tagging, sentence classification and dependency parsing, with datasets from a variety of scientific domains. We demonstrate statistically significant improvements over BERT and achieve new state-of-the-art results on several of these tasks. The code and pretrained models are available at https://github.com/allenai/scibert/.}
 }
-@article{yasunaga2020linkbert,
-	title        = {Linkbert: pretraining language models with document links},
-	author       = {Yasunaga, M. and Leskovec, J. and Liang, P.},
-	year         = 2022,
-	doi          = {10.48550/arxiv.2203.15827}
+@article{yasunaga2022linkbert,
+  title={Linkbert: Pretraining language models with document links},
+  author={Yasunaga, Michihiro and Leskovec, Jure and Liang, Percy},
+  journal={arXiv preprint arXiv:2203.15827},
+  year={2022}
 }
 @misc{jin2023large,
 	title        = {Can Large Language Models Infer Causation from Correlation?},
@@ -110,7 +120,7 @@
 }
 @article{lfoppiano2021supermat,
 	title        = {Supermat: construction of a linked annotated dataset from superconductors-related publications},
-	author       = {Foppiano, L. and Dieb, T. and Suzuki, A. and Castro, P. and Iwasaki, S. and Uzuki, A. and Echevarria, M. and Meng, Y. and Terashima, K. and Romary, L. and Takano, Y. and Ishii, M.},
+	author       = {Foppiano, Luca and Dieb, Thaer and Suzuki, Akira and Castro, Pedro and Iwasaki, Suguru and Uzuki, Asuza and Echevarria, Miren and Meng, Yan and Terashima, Kensei and Romary, Laurent and Takano, Yoshihiko and Ishii, Masashi},
 	year         = 2021,
 	journal      = {Science and Technology of Advanced Materials Methods},
 	volume       = 1,
@@ -120,7 +130,7 @@
 }
 @article{lfoppiano2023automatic,
 	title        = {Automatic extraction of materials and properties from superconductors scientific literature},
-	author       = {Foppiano, L. and Castro, P. and Suarez, P. and Terashima, K. and Takano, Y. and Ishii, M.},
+	author       = {Foppiano, Luca and Castro, Pedro and Suarez, Pedro and Terashima, Kensei and Takano, Yoshihiko and Ishii, Masashi},
 	year         = 2023,
 	journal      = {Science and Technology of Advanced Materials Methods},
 	volume       = 3,
@@ -202,229 +212,238 @@
 	volume       = 62,
 	pages        = 101983
 }
-
 @article{dou2021gpt,
-  title={Is GPT-3 text indistinguishable from human text? SCARECROW: A framework for scrutinizing machine text},
-  author={Dou, Yao and Forbes, Maxwell and Koncel-Kedziorski, Rik and Smith, Noah A and Choi, Yejin},
-  journal={arXiv preprint arXiv:2107.01294},
-  year={2021}
+	title        = {Is GPT-3 text indistinguishable from human text? SCARECROW: A framework for scrutinizing machine text},
+	author       = {Dou, Yao and Forbes, Maxwell and Koncel-Kedziorski, Rik and Smith, Noah A and Choi, Yejin},
+	year         = 2021,
+	journal      = {arXiv preprint arXiv:2107.01294}
 }
-
-
 @inproceedings{wu2023exploring,
-  title={Exploring Prompt Engineering with GPT Language Models for Document-Level Machine Translation: Insights and Findings},
-  author={Wu, Yangjian and Hu, Gang},
-  booktitle={Proceedings of the Eighth Conference on Machine Translation},
-  pages={166--169},
-  year={2023}
+	title        = {Exploring Prompt Engineering with GPT Language Models for Document-Level Machine Translation: Insights and Findings},
+	author       = {Wu, Yangjian and Hu, Gang},
+	year         = 2023,
+	booktitle    = {Proceedings of the Eighth Conference on Machine Translation},
+	pages        = {166--169}
 }
-
 @misc{ouyang2022training,
-      title={Training language models to follow instructions with human feedback}, 
-      author={Long Ouyang and Jeff Wu and Xu Jiang and Diogo Almeida and Carroll L. Wainwright and Pamela Mishkin and Chong Zhang and Sandhini Agarwal and Katarina Slama and Alex Ray and John Schulman and Jacob Hilton and Fraser Kelton and Luke Miller and Maddie Simens and Amanda Askell and Peter Welinder and Paul Christiano and Jan Leike and Ryan Lowe},
-      year={2022},
-      eprint={2203.02155},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+	title        = {Training language models to follow instructions with human feedback},
+	author       = {Long Ouyang and Jeff Wu and Xu Jiang and Diogo Almeida and Carroll L. Wainwright and Pamela Mishkin and Chong Zhang and Sandhini Agarwal and Katarina Slama and Alex Ray and John Schulman and Jacob Hilton and Fraser Kelton and Luke Miller and Maddie Simens and Amanda Askell and Peter Welinder and Paul Christiano and Jan Leike and Ryan Lowe},
+	year         = 2022,
+	eprint       = {2203.02155},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CL}
 }
-
 @article{hatakeyama2023using,
-  title={Using GPT-4 in parameter selection of polymer informatics: improving predictive accuracy amidst data scarcity and ‘Ugly Duckling’dilemma},
-  author={Hatakeyama-Sato, Kan and Watanabe, Seigo and Yamane, Naoki and Igarashi, Yasuhiko and Oyaizu, Kenichi},
-  journal={Digital Discovery},
-  volume={2},
-  number={5},
-  pages={1548--1557},
-  year={2023},
-  publisher={Royal Society of Chemistry}
+	title        = {Using GPT-4 in parameter selection of polymer informatics: improving predictive accuracy amidst data scarcity and ‘Ugly Duckling’dilemma},
+	author       = {Hatakeyama-Sato, Kan and Watanabe, Seigo and Yamane, Naoki and Igarashi, Yasuhiko and Oyaizu, Kenichi},
+	year         = 2023,
+	journal      = {Digital Discovery},
+	publisher    = {Royal Society of Chemistry},
+	volume       = 2,
+	number       = 5,
+	pages        = {1548--1557}
 }
-
-
 @article{zhang2023one,
-  title={One small step for generative ai, one giant leap for agi: A complete survey on chatgpt in aigc era},
-  author={Zhang, Chaoning and Zhang, Chenshuang and Li, Chenghao and Qiao, Yu and Zheng, Sheng and Dam, Sumit Kumar and Zhang, Mengchun and Kim, Jung Uk and Kim, Seong Tae and Choi, Jinwoo and others},
-  journal={arXiv preprint arXiv:2304.06488},
-  year={2023}
+	title        = {One small step for generative ai, one giant leap for agi: A complete survey on chatgpt in aigc era},
+	author       = {Zhang, Chaoning and Zhang, Chenshuang and Li, Chenghao and Qiao, Yu and Zheng, Sheng and Dam, Sumit Kumar and Zhang, Mengchun and Kim, Jung Uk and Kim, Seong Tae and Choi, Jinwoo and others},
+	year         = 2023,
+	journal      = {arXiv preprint arXiv:2304.06488}
 }
-
 @article{yao2023tree,
-  title={Tree of thoughts: Deliberate problem solving with large language models},
-  author={Yao, Shunyu and Yu, Dian and Zhao, Jeffrey and Shafran, Izhak and Griffiths, Thomas L and Cao, Yuan and Narasimhan, Karthik},
-  journal={arXiv preprint arXiv:2305.10601},
-  year={2023}
+	title        = {Tree of thoughts: Deliberate problem solving with large language models},
+	author       = {Yao, Shunyu and Yu, Dian and Zhao, Jeffrey and Shafran, Izhak and Griffiths, Thomas L and Cao, Yuan and Narasimhan, Karthik},
+	year         = 2023,
+	journal      = {arXiv preprint arXiv:2305.10601}
 }
-
-
 @article{valmeekam2023planning,
-  title={On the Planning Abilities of Large Language Models--A Critical Investigation},
-  author={Valmeekam, Karthik and Marquez, Matthew and Sreedharan, Sarath and Kambhampati, Subbarao},
-  journal={arXiv preprint arXiv:2305.15771},
-  year={2023}
+	title        = {On the Planning Abilities of Large Language Models--A Critical Investigation},
+	author       = {Valmeekam, Karthik and Marquez, Matthew and Sreedharan, Sarath and Kambhampati, Subbarao},
+	year         = 2023,
+	journal      = {arXiv preprint arXiv:2305.15771}
 }
-
-
 @article{sun2023pearl,
-  title={PEARL: Prompting Large Language Models to Plan and Execute Actions Over Long Documents},
-  author={Sun, Simeng and Liu, Yang and Wang, Shuohang and Zhu, Chenguang and Iyyer, Mohit},
-  journal={arXiv preprint arXiv:2305.14564},
-  year={2023}
+	title        = {PEARL: Prompting Large Language Models to Plan and Execute Actions Over Long Documents},
+	author       = {Sun, Simeng and Liu, Yang and Wang, Shuohang and Zhu, Chenguang and Iyyer, Mohit},
+	year         = 2023,
+	journal      = {arXiv preprint arXiv:2305.14564}
 }
-
 @article{xuSmallDataMachine2023,
-  title = {Small Data Machine Learning in Materials Science},
-  author = {Xu, Pengcheng and Ji, Xiaobo and Li, Minjie and Lu, Wencong},
-  year = {2023},
-  month = mar,
-  journal = {npj Computational Materials},
-  volume = {9},
-  number = {1},
-  pages = {42},
-  issn = {2057-3960},
-  doi = {10.1038/s41524-023-01000-z},
-  abstract = {This review discussed the dilemma of small data faced by materials machine learning. First, we analyzed the limitations brought by small data. Then, the workflow of materials machine learning has been introduced. Next, the methods of dealing with small data were introduced, including data extraction from publications, materials database construction, high-throughput computations and experiments from the data source level; modeling algorithms for small data and imbalanced learning from the algorithm level; active learning and transfer learning from the machine learning strategy level. Finally, the future directions for small data machine learning in materials science were proposed.}
+	title        = {Small Data Machine Learning in Materials Science},
+	author       = {Xu, Pengcheng and Ji, Xiaobo and Li, Minjie and Lu, Wencong},
+	year         = 2023,
+	month        = mar,
+	journal      = {npj Computational Materials},
+	volume       = 9,
+	number       = 1,
+	pages        = 42,
+	doi          = {10.1038/s41524-023-01000-z},
+	issn         = {2057-3960},
+	abstract     = {This review discussed the dilemma of small data faced by materials machine learning. First, we analyzed the limitations brought by small data. Then, the workflow of materials machine learning has been introduced. Next, the methods of dealing with small data were introduced, including data extraction from publications, materials database construction, high-throughput computations and experiments from the data source level; modeling algorithms for small data and imbalanced learning from the algorithm level; active learning and transfer learning from the machine learning strategy level. Finally, the future directions for small data machine learning in materials science were proposed.}
 }
-
-@article{boyddatadriven2019, 
-  author = {Boyd, P. G. and Chidambaram, A. and García-Díez, E. and Ireland, C. P. and Daff, T. D. and Bounds, R. and Gładysiak, A. and Schouwink, P. and Moosavi, S. M. and Maroto‐Valer, M. M. and Reimer, J. A. and Navarro, J. A. R. and Woo, T. K. and García, S. and Stylianou, K. C. and Smit, B.}, 
-  title = {Data-driven design of metal–organic frameworks for wet flue gas co2 capture}, 
-  journal = {Nature}, 
-  year = {2019}, 
-  volume = {576}, 
-  issue = {7786}, 
-  pages = {253-256}, 
-  doi = {10.1038/s41586-019-1798-7} 
+@article{boyd2019data,
+  title={Data-driven design of metal--organic frameworks for wet flue gas CO2 capture},
+  author={Boyd, Peter G and Chidambaram, Arunraj and Garc{\'\i}a-D{\'\i}ez, Enrique and Ireland, Christopher P and Daff, Thomas D and Bounds, Richard and G{\l}adysiak, Andrzej and Schouwink, Pascal and Moosavi, Seyed Mohamad and Maroto-Valer, M Mercedes and others},
+  journal={Nature},
+  volume={576},
+  number={7786},
+  pages={253--256},
+  year={2019},
+  publisher={Nature Publishing Group UK London}
 }
-
-@article{zakutayevanopenexp2018, 
-  author = {Zakutayev, A. and Wunder, N. and Schwarting, M. and Perkins, J. D. and White, R. R. and Munch, K. and Tumas, W. and Phillips, C.}, 
-  title = {An open experimental database for exploring inorganic materials}, 
-  journal = {Scientific Data}, 
-  year = {2018}, 
-  volume = {5}, 
-  issue = {1}, 
-  doi = {10.1038/sdata.2018.53} 
+@article{zakutayev2018open,
+  title={An open experimental database for exploring inorganic materials},
+  author={Zakutayev, Andriy and Wunder, Nick and Schwarting, Marcus and Perkins, John D and White, Robert and Munch, Kristin and Tumas, William and Phillips, Caleb},
+  journal={Scientific data},
+  volume={5},
+  number={1},
+  pages={1--12},
+  year={2018},
+  publisher={Nature Publishing Group}
 }
-
-@article{huanapolydat2016, 
-  author = {Huan, T. D. and Mannodi-Kanakkithodi, A. and Sharma, V. and Pilania, G. and Ramprasad, R.}, 
-  title = {A polymer dataset for accelerated property prediction and design}, 
-  journal = {Scientific Data}, 
-  year = {2016},
-  volume = {3}, 
-  issue = {1}, 
-  doi = {10.1038/sdata.2016.12} 
+@article{huan2016polymer,
+  title={A polymer dataset for accelerated property prediction and design},
+  author={Huan, Tran Doan and Mannodi-Kanakkithodi, Arun and Kim, Chiho and Sharma, Vinit and Pilania, Ghanshyam and Ramprasad, Rampi},
+  journal={Scientific data},
+  volume={3},
+  number={1},
+  pages={1--10},
+  year={2016},
+  publisher={Nature Publishing Group}
 }
-
-@article{raomachlearn2022, 
-  author = {Rao, Z. and Tung, P. and Xie, R. and Ye, W. and Zhang, H. and Ferrari, A. and Klaver, T. and Körmann, F. and Prithiv, T. and Silva, A. K. d. and Chen, Y. and Li, Z. M. and Ponge, D. and Neugebauer, J. and Gutfleisch, O. and Bauer, S. and Raabe, D.}, 
-  title = {Machine learning–enabled high-entropy alloy discovery}, 
-  journal = {Science}, 
-  year = {2022}, 
-  volume = {378}, 
-  issue = {6615}, 
-  pages = {78-85}, 
-  doi = {10.1126/science.abo4940} 
+@article{rao2022machine,
+  title={Machine learning--enabled high-entropy alloy discovery},
+  author={Rao, Ziyuan and Tung, Po-Yen and Xie, Ruiwen and Wei, Ye and Zhang, Hongbin and Ferrari, Alberto and Klaver, TPC and K{\"o}rmann, Fritz and Sukumar, Prithiv Thoudden and Kwiatkowski da Silva, Alisson and others},
+  journal={Science},
+  volume={378},
+  number={6615},
+  pages={78--85},
+  year={2022},
+  publisher={American Association for the Advancement of Science}
 }
-
-@article{pyzerknappaccmat2022,
-  title = {Accelerating Materials Discovery Using Artificial Intelligence, High Performance Computing and Robotics},
-  author = {{Pyzer-Knapp}, Edward O. and Pitera, Jed W. and Staar, Peter W. J. and Takeda, Seiji and Laino, Teodoro and Sanders, Daniel P. and Sexton, James and Smith, John R. and Curioni, Alessandro},
-  year = {2022},
-  journal = {npj Computational Materials},
-  volume = {8},
-  number = {1},
-  pages = {84},
-  issn = {2057-3960},
-  doi = {10.1038/s41524-022-00765-z}
+@article{pyzer2022accelerating,
+  title={Accelerating materials discovery using artificial intelligence, high performance computing and robotics},
+  author={Pyzer-Knapp, Edward O and Pitera, Jed W and Staar, Peter WJ and Takeda, Seiji and Laino, Teodoro and Sanders, Daniel P and Sexton, James and Smith, John R and Curioni, Alessandro},
+  journal={npj Computational Materials},
+  volume={8},
+  number={1},
+  pages={84},
+  year={2022},
+  publisher={Nature Publishing Group UK London}
 }
-
 @misc{huber2020machine,
-  title={Machine learning and data mining in materials science},
-  author={Huber, Norbert and Kalidindi, Surya R and Klusemann, Benjamin and Cyron, Christian J},
-  journal={Frontiers in Materials},
-  volume={7},
-  pages={51},
-  year={2020},
-  publisher={Frontiers Media SA}
+	title        = {Machine learning and data mining in materials science},
+	author       = {Huber, Norbert and Kalidindi, Surya R and Klusemann, Benjamin and Cyron, Christian J},
+	year         = 2020,
+	journal      = {Frontiers in Materials},
+	publisher    = {Frontiers Media SA},
+	volume       = 7,
+	pages        = 51
 }
-
 @article{park2021advances,
-  title={Advances in scientific literature mining for interpreting materials characterization},
-  author={Park, Gilchan and Pouchard, Line},
-  journal={Machine Learning: Science and Technology},
-  volume={2},
-  number={4},
-  pages={045007},
-  year={2021},
-  publisher={IOP Publishing}
+	title        = {Advances in scientific literature mining for interpreting materials characterization},
+	author       = {Park, Gilchan and Pouchard, Line},
+	year         = 2021,
+	journal      = {Machine Learning: Science and Technology},
+	publisher    = {IOP Publishing},
+	volume       = 2,
+	number       = 4,
+	pages        = {045007}
 }
-
-@Article{chittambigdat2021,
-  author = {Chittam, Swetha and Gokaraju, Balakrishna and Xu, Zhigang and Sankar, Jagannathan and Roy, Kaushik},
-  title = {Big Data Mining and Classification of Intelligent Material Science Data Using Machine Learning},
-  journal = {Applied Sciences},
-  volume = {11},
-  year = {2021},
-  number = {18},
-  article-number = {8596},
-  url = {https://www.mdpi.com/2076-3417/11/18/8596},
-  issn = {2076-3417},
-  doi = {10.3390/app11188596}
+@article{chittambigdat2021,
+	title        = {Big Data Mining and Classification of Intelligent Material Science Data Using Machine Learning},
+	author       = {Chittam, Swetha and Gokaraju, Balakrishna and Xu, Zhigang and Sankar, Jagannathan and Roy, Kaushik},
+	year         = 2021,
+	journal      = {Applied Sciences},
+	volume       = 11,
+	number       = 18,
+	doi          = {10.3390/app11188596},
+	issn         = {2076-3417},
+	url          = {https://www.mdpi.com/2076-3417/11/18/8596},
+	article-number = 8596
 }
-
 @article{madataug2020,
-  title = {Data Augmentation in Microscopic Images for Material Data Mining},
-  author = {Ma, Boyuan and Wei, Xiaoyan and Liu, Chuni and Ban, Xiaojuan and Huang, Haiyou and Wang, Hao and Xue, Weihua and Wu, Stephen and Gao, Mingfei and Shen, Qing and Mukeshimana, Michele and Abuassba, Adnan Omer and Shen, Haokai and Su, Yanjing},
-  year = {2020},
-  journal = {npj Computational Materials},
-  volume = {6},
-  number = {1},
-  pages = {125},
-  issn = {2057-3960},
-  doi = {10.1038/s41524-020-00392-6}
+	title        = {Data Augmentation in Microscopic Images for Material Data Mining},
+	author       = {Ma, Boyuan and Wei, Xiaoyan and Liu, Chuni and Ban, Xiaojuan and Huang, Haiyou and Wang, Hao and Xue, Weihua and Wu, Stephen and Gao, Mingfei and Shen, Qing and Mukeshimana, Michele and Abuassba, Adnan Omer and Shen, Haokai and Su, Yanjing},
+	year         = 2020,
+	journal      = {npj Computational Materials},
+	volume       = 6,
+	number       = 1,
+	pages        = 125,
+	doi          = {10.1038/s41524-020-00392-6},
+	issn         = {2057-3960}
 }
-
 @book{parinov2013microstructure,
-  title={Microstructure and properties of high-temperature superconductors},
-  author={Parinov, Ivan A},
-  year={2013},
-  publisher={Springer Science \& Business Media}
+	title        = {Microstructure and properties of high-temperature superconductors},
+	author       = {Parinov, Ivan A},
+	year         = 2013,
+	publisher    = {Springer Science \& Business Media}
 }
-
 @article{hosono2015exploration,
-  title={Exploration of new superconductors and functional materials, and fabrication of superconducting tapes and wires of iron pnictides},
-  author={Hosono, Hideo and Tanabe, Keiichi and Takayama-Muromachi, Eiji and Kageyama, Hiroshi and Yamanaka, Shoji and Kumakura, Hiroaki and Nohara, Minoru and Hiramatsu, Hidenori and Fujitsu, Satoru},
-  journal={Science and Technology of Advanced Materials},
-  year={2015},
-  publisher={Taylor \& Francis}
+	title        = {Exploration of new superconductors and functional materials, and fabrication of superconducting tapes and wires of iron pnictides},
+	author       = {Hosono, Hideo and Tanabe, Keiichi and Takayama-Muromachi, Eiji and Kageyama, Hiroshi and Yamanaka, Shoji and Kumakura, Hiroaki and Nohara, Minoru and Hiramatsu, Hidenori and Fujitsu, Satoru},
+	year         = 2015,
+	journal      = {Science and Technology of Advanced Materials},
+	publisher    = {Taylor \& Francis}
 }
-
 @article{mydeen2020electron,
-  title={Electron doping of the iron-arsenide superconductor CeFeAsO controlled by hydrostatic pressure},
-  author={Mydeen, K and Jesche, Anton and Meier-Kirchner, K and Schwarz, U and Geibel, C and Rosner, H and Nicklas, Michael},
-  journal={Physical Review Letters},
-  volume={125},
-  number={20},
-  pages={207001},
-  year={2020},
-  publisher={APS}
+	title        = {Electron doping of the iron-arsenide superconductor CeFeAsO controlled by hydrostatic pressure},
+	author       = {Mydeen, K and Jesche, Anton and Meier-Kirchner, K and Schwarz, U and Geibel, C and Rosner, H and Nicklas, Michael},
+	year         = 2020,
+	journal      = {Physical Review Letters},
+	publisher    = {APS},
+	volume       = 125,
+	number       = 20,
+	pages        = 207001
 }
-
 @article{bardeen1957theory,
-  title={Theory of superconductivity},
-  author={Bardeen, John and Cooper, Leon N and Schrieffer, John Robert},
-  journal={Physical review},
-  volume={108},
-  number={5},
-  pages={1175},
-  year={1957},
-  publisher={APS}
+	title        = {Theory of superconductivity},
+	author       = {Bardeen, John and Cooper, Leon N and Schrieffer, John Robert},
+	year         = 1957,
+	journal      = {Physical review},
+	publisher    = {APS},
+	volume       = 108,
+	number       = 5,
+	pages        = 1175
 }
-
 @online{OpenAIDocJan2024,
-  author = {OpenAI},
-  title = {Models},
-  year = 2024,
-  url = {https://platform.openai.com/docs/models},
-  urldate = {2024-01-04}
+	title        = {Models},
+	author       = {OpenAI},
+	year         = 2024,
+    howpublished = "\url{https://platform.openai.com/docs/models}",
+	urldate      = {2024-01-04},
+    note         = "[Online; accessed 04-January-2024]"
+}
+@online{ratcliff_obershelp,
+	title        = {Pattern Matching: the Gestalt Approach},
+	author       = {John, W. Ratcliff},
+	year         = 1988,
+    howpublished = "\url{https://www.drdobbs.com/database/pattern-matching-the-gestalt-approach/184407970?pgno=5}",
+	urldate      = {2024-01-04},
+    note         = "[Online; accessed 04-January-2024]"
+}
+@inproceedings{ratinov2009design,
+  title={Design challenges and misconceptions in named entity recognition},
+  author={Ratinov, Lev and Roth, Dan},
+  booktitle={Proceedings of the thirteenth conference on computational natural language learning (CoNLL-2009)},
+  pages={147--155},
+  year={2009}
+}
+@article{nadeau2007survey,
+  title={A survey of named entity recognition and classification},
+  author={Nadeau, David and Sekine, Satoshi},
+  journal={Lingvisticae Investigationes},
+  volume={30},
+  number={1},
+  pages={3--26},
+  year={2007},
+  publisher={John Benjamins}
+}
+@article{mullick2024matscire,
+  title={MatSciRE: Leveraging pointer networks to automate entity and relation extraction for material science knowledge-base construction},
+  author={Mullick, Ankan and Ghosh, Akash and Chaitanya, G Sai and Ghui, Samir and Nayak, Tapas and Lee, Seung-Cheol and Bhattacharjee, Satadeep and Goyal, Pawan},
+  journal={Computational Materials Science},
+  volume={233},
+  pages={112659},
+  year={2024},
+  publisher={Elsevier}
 }
