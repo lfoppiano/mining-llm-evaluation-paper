@@ -502,7 +502,7 @@ The second strategy, "FT.augmented", is to augment the size of the dataset, gene
 
 \section{Results and discussions}
 \label{sec:results}
-In this section, we present and discuss the formula matching and the aggregated results of our evaluations for the LLMs. The completed raw results are available in the Appendix \ref{appendix}. 
+In this section, we present and discuss the formula matching and the aggregated results of our evaluations for the LLMs. The completed raw results are available in the Appendix \ref{appendix:full-evaluation-results}. 
 
 \subsection{Limitation of this study}
 In this paper, we aim to estimate how well LLMs work in tasks related to materials science. 
@@ -661,7 +661,7 @@ MI supervised the process and provided the budget.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=1\textwidth]{figures/formula-matching-schema.png} 
+  \includegraphics[width=1\textwidth]{figures/formula-matching-schema} 
   \caption{Two materials that appear to have a very different composition are, in reality, overlapping. (Top) Summary of the Material Parser. More information is available in~\cite{lfoppiano2023automatic}. (Bottom) The pairwise comparison of each chemical formula is performed element-by-element.  }
   \label{fig:formula-matching-schema}
 \end{figure}
@@ -684,35 +684,35 @@ MI supervised the process and provided the budget.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.78\textwidth]{figures/ner-measeval-all.png} 
+  \includegraphics[width=0.78\textwidth]{figures/ner-measeval-all} 
   \caption{Comparison scores for properties extraction using NER. The scores are the aggregations of the micro average F1 scores and are calculated using soft matching with a threshold of 0.9 similarity. The error bars are calculated over the standard deviation of three independent runs.}
   \label{fig:ner-measeval-all}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/ner-supermat-all.png} 
+  \includegraphics[width=0.8\textwidth]{figures/ner-supermat-all} 
   \caption{Comparison scores for material extraction using NER. The metrics are the aggregations of the micro average F1-scores, calculated using formula matching. The error bars are calculated over the standard deviation of three independent runs.}
   \label{fig:ner-materials-all}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/re-eval-all.png} 
+  \includegraphics[width=0.8\textwidth]{figures/re-eval-all} 
   \caption{Comparison of the scores of the shuffled extraction using zero-shot prompting, few-shot prompting and the fine-tuned model for RE on materials and properties. The metrics are the aggregated micro average F1-scores calculated using strict matching. The error bars are calculated over the standard deviation of three independent runs.}
   \label{fig:re-eval-all}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/re-eval-shuffled-all.png} 
+  \includegraphics[width=0.8\textwidth]{figures/re-eval-shuffled-all} 
   \caption{Overview evaluation on shuffling the provided entities in RE on materials and properties. The metrics are the aggregated micro average F1-scores calculated using strict matching. The error bars are calculated over the standard deviation of three independent runs.}
   \label{fig:re-eval-shuffled-all}
 \end{figure}
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.8\textwidth]{figures/re-eval-ft.png} 
+  \includegraphics[width=0.8\textwidth]{figures/re-eval-ft} 
   \caption{Evaluation of the impact of data variability in fine-tuning GPT-3.5-Turbo. The metrics are the aggregated micro average F1-scores calculated using strict matching. The model "FT.document\_order" was fine-tuned with the original data, where entities were taken of appearance. In "FT.base", our default strategy, the entities provided to the prompt were scrambled. The error bars are calculated over the standard deviation of three independent runs.}
   \label{fig:re-eval-ft}
 \end{figure}
