@@ -2,7 +2,7 @@
 
 Foppiano, L., Lambard, G., Amagasa, T., & Ishii, M. (2024). Mining experimental data from materials science literature with large language models: an evaluation study. Science and Technology of Advanced Materials: Methods, 4(1). https://doi.org/10.1080/27660400.2024.2356506
 
-Code in [https://github.com/lfoppiano/LuMEN](https://github.com/lfoppiano/MatSci-LumEn)
+Data and Code mentioned in the manuscript are available at [https://github.com/lfoppiano/MatSci-LuMEN](https://github.com/lfoppiano/MatSci-LumEn)
 
 DOI: https://doi.org/10.1080/27660400.2024.2356506
 
